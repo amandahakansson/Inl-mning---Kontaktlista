@@ -50,7 +50,7 @@ function toggleEdit(nameField, phoneField, editButton) {
     const isDisabled = nameField.disabled;
     nameField.disabled = !isDisabled;
     phoneField.disabled = !isDisabled;
-    editButton.textContent = isDisabled ? "Spara" : "Ändra";
+    editButton.textContent = isDisabled ? "Ändra" : "Ändra";
 }
 
 function deleteContact(contactItem) {
