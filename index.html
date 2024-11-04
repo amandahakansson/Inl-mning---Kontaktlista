@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontaktlista</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="new-contact">
+        <input type="text" id="name" placeholder="Namn" required>
+        <input type="text" id="phone" placeholder="Telefon" required>
+        <button id="create-button">Skapa</button>
+        <button id="clear-button">Radera lista</button>
+    </div>
+    <div id="error-message" style="color: red;"></div> 
+
+    <h1>Kontaktlista</h1>
+    <ul id="contacts-container"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
