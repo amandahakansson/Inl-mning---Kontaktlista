@@ -12,7 +12,7 @@ function createContact() {
     errorMessage.textContent = ""; 
 
     if (!validateContact(name, phone)) {
-        errorMessage.textContent = "Får ej skapa tom kontakt";
+        errorMessage.textContent = "Vänligen ange både namn och telefonnummer";
         return;
     }
 
@@ -48,10 +48,19 @@ function createButton(text, onClick) {
 
 function toggleEdit(nameField, phoneField, editButton) {
     const isDisabled = nameField.disabled;
+
+    if (!isDisabled) {
+        if (!nameField.value.trim() || !phoneField.value.trim()) {
+            editButton.textContent = "Spara"; 
+            return;
+        }
+    }
+
     nameField.disabled = !isDisabled;
     phoneField.disabled = !isDisabled;
-    editButton.textContent = isDisabled ? "Ändra" : "Ändra";
+    editButton.textContent = isDisabled ? "Spara" : "Ändra";
 }
+
 
 function deleteContact(contactItem) {
     contactItem.remove();
