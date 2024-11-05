@@ -19,7 +19,7 @@ function createContact() {
     const contactItem = document.createElement("li");
     const nameField = createContactField(name);
     const phoneField = createContactField(phone);
-    const editButton = createButton("Ändra", () => toggleEdit(nameField, phoneField, editButton));
+    const editButton = createButton("Ändra", () => toggleEdit(nameField, phoneField, editButton, errorMessage));
     const deleteButton = createButton("Radera", () => deleteContact(contactItem));
 
     contactItem.appendChild(nameField);
@@ -46,21 +46,25 @@ function createButton(text, onClick) {
     return button;
 }
 
-function toggleEdit(nameField, phoneField, editButton) {
+function toggleEdit(nameField, phoneField, editButton, errorMessage) {
     const isDisabled = nameField.disabled;
+
+    // Clear any existing error messages
+    errorMessage.textContent = "";
 
     if (!isDisabled) {
         if (!nameField.value.trim() || !phoneField.value.trim()) {
-            editButton.textContent = "Spara"; 
+            errorMessage.textContent = "Fyll i båda fälten för att spara ändringar";
+            editButton.textContent = "Spara";
             return;
         }
     }
 
+    // Toggle disabled state and update button text
     nameField.disabled = !isDisabled;
     phoneField.disabled = !isDisabled;
     editButton.textContent = isDisabled ? "Spara" : "Ändra";
 }
-
 
 function deleteContact(contactItem) {
     contactItem.remove();
